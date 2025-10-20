@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porfolio</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-row">
+                <a href="./index.html" class="logo"><strong>My</strong> portfolio</a>
+                <button class="dark-mode-btn">
+                    <img src="./img/icons/sun.svg" alt="Light mode" class="dark-mode-btn__icon">
+                    <img src="./img/icons/moon.svg" alt="Dark mode" class="dark-mode-btn__icon">
+                </button>
+                <ul id = "menu" class="nav-list">
+                    <li class="nav-list__item"><a href="./index.html" class="nav-list__link">Projects</a></li>
+                    <li class="nav-list__item"><a href="./skills.html" class="nav-list__link">Skills</a></li>
+                    <li class="nav-list__item"><a href="./contact.html" class="nav-list__link nav-list__link--active">Contacts</a></li>
+
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню">
+                <span class="hamburger-bars" aria-hidden="true">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+            </button>
+
+
+        </div>
+    </nav>  
+
+
+
+  <main class="section">
+         
+        <div class="container">
+          <div class="section-header">
+            <h2>Контакты</h2>
+          <p>Свяжитесь со мной через форму ниже:</p>
+      </div>
+     <form id="contactForm" class="contact-form">
+        <label>
+          Имя:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" />
+        </label>
+        <label class="full">
+          Сообщение:
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <button type="submit" class="btn">Отправить</button>
+        <p id="formStatus" class="form-status"></p>
+      </form>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <ul class="social">
+                    <li class="social__item"><a href="https://www.instagram.com/_abaskan0v._?igsh=N3Q2Z3djeGk3NGxs&utm_source=qr"><img src="./img/icons/instagram.svg" alt=""></a></li>
+                    <li class="social__item"><a href="https://github.com/Zeckd"><img src="./img/icons/gitHub.svg" alt=""></a></li>
+                    <li class="social__item"><a href="#!"><img src="./img/icons/linkedIn.svg" alt=""></a></li>
+                    <li class="social__item"><a href="#!"><img src="./img/icons/vk.svg" alt=""></a></li>
+                </ul>
+                <div class="copyright">
+                    <p>@ 2025 frontend_portfolio.com</p>
+                </div>
+            </div>
+        </div>
+       
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

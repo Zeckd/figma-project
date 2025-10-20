@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porfolio</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-row">
+                <a href="./index.html" class="logo"><strong>My</strong> portfolio</a>
+                <button class="dark-mode-btn">
+                    <img src="./img/icons/sun.svg" alt="Light mode" class="dark-mode-btn__icon">
+                    <img src="./img/icons/moon.svg" alt="Dark mode" class="dark-mode-btn__icon">
+                </button>
+                <ul id = "menu" class="nav-list">
+                    <li class="nav-list__item"><a href="./index.html" class="nav-list__link">Projects</a></li>
+                    <li class="nav-list__item"><a href="./skills.html" class="nav-list__link nav-list__link--active">Skills</a></li>
+                    <li class="nav-list__item"><a href="./contact.html" class="nav-list__link">Contacts</a></li>
+
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню">
+                <span class="hamburger-bars" aria-hidden="true">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>
+            </button>
+
+
+        </div>
+    </nav>  
+
+
+
+  <main class="section">
+         
+        <div class="container">
+          <div class="section-header">
+            <h2>Навыки</h2>
+            <p>Технологии и области экспертизы, которые активно применяю при разработке серверной части и архитектуры систем.</p>
+
+          </div>
+        <ul class="chip-list">
+            <li class="chip">Java</li>
+            <li class="chip">Spring Boot</li>
+            <li class="chip">Spring Security</li>
+            <li class="chip">REST API</li>
+            <li class="chip">GraphQL</li>
+            <li class="chip">PostgreSQL</li>
+            <li class="chip">MySQL</li>
+            <li class="chip">Hibernate</li>
+            <li class="chip">JPA</li>
+            <li class="chip">Docker</li>
+            <li class="chip">Git</li>
+            <li class="chip">Unit Testing</li>
+            <li class="chip">Microservices</li>
+            <li class="chip">CI/CD</li>
+        </ul>
+
+        </div>
+        <section class="section testimonials">
+      <div class="container">
+        <h2 class="title-1">Отзывы</h2>
+        <div id="testimonialsList" class="testimonials-list"></div>
+      </div>
+    </section>
+
+    
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <ul class="social">
+                    <li class="social__item"><a href="https://www.instagram.com/_abaskan0v._?igsh=N3Q2Z3djeGk3NGxs&utm_source=qr"><img src="./img/icons/instagram.svg" alt=""></a></li>
+                    <li class="social__item"><a href="https://github.com/Zeckd"><img src="./img/icons/gitHub.svg" alt=""></a></li>
+                    <li class="social__item"><a href="#!"><img src="./img/icons/linkedIn.svg" alt=""></a></li>
+                    <li class="social__item"><a href="#!"><img src="./img/icons/vk.svg" alt=""></a></li>
+                </ul>
+                <div class="copyright">
+                    <p>@ 2025 frontend_portfolio.com</p>
+                </div>
+            </div>
+        </div>
+       
+    
+    </footer>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
