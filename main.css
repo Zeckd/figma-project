@@ -157,6 +157,21 @@ body {
   padding-top: 80px; /* высота шапки */
 }
 
+/* Дополнительный отступ для секции проектов на мобильных */
+@media (max-width: 768px) {
+  .section {
+    padding-top: 10px; /* Больше отступа сверху на мобильных */
+  }
+  
+  /* Делаем заголовок Projects более заметным на мобильных */
+  .title-1 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 48px; /* Увеличиваем размер на мобильных */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Добавляем тень для лучшей видимости */
+  }
+}
+
 
 
 
@@ -661,15 +676,23 @@ body {
   }
 }
 .hamburger {
-  width: 42px; height: 42px; border-radius: 10px;
-  border: 1px solid #ccc; display: none; place-items: center;
-  background: transparent; cursor: pointer; transition: border-color .2s ease;
+  width: 42px; 
+  height: 42px; 
+  border-radius: 10px;
+  border: 1px solid #ccc; 
+  display: none; 
+  place-items: center;
+  background: transparent; 
+  cursor: pointer; 
+  transition: border-color .2s ease;
 }
+
 .hamburger-bars {
-   position: relative;
-   width: 20px;
-   height: 14px;
-  }
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
 .bar { 
   position: absolute;
   left: 0;
@@ -677,31 +700,101 @@ body {
   height: 2px; 
   background: currentColor;
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
+
 .bar:nth-child(1) {
   top: 0;
 }
+
 .bar:nth-child(2) {
   top: 6px;
 }
+
 .bar:nth-child(3) {
   bottom: 0;
 }
 
+/* Анимация бургера в крестик */
+.hamburger[aria-expanded="true"] .bar:nth-child(1) {
+  top: 6px;
+  transform: rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] .bar:nth-child(3) {
+  bottom: 6px;
+  transform: rotate(-45deg);
+}
+
+
+/* Анимация для мобильного меню */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
 
 /* Мобайл: скрываем горизонтальное меню до открытия */
 @media (max-width: 768px) {
-  .hamburger { display: grid; }
+  .hamburger { 
+    display: grid; 
+    z-index: 1001;
+  }
+  
   #menu,
   .menu {
     display: none;
-    position: absolute; left: 0; right: 0; top: 60px;
-    background: #fff; border: 1px solid #ddd; border-radius: 12px;
-    flex-direction: column; padding: 10px;
+    position: absolute; 
+    left: 15px; 
+    right: 15px; 
+    top: 80px;
+    background: var(--dark-bg); 
+    border: 1px solid var(--dark-border); 
+    border-radius: 12px;
+    flex-direction: column; 
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
+  
   #menu.open,
-  .menu.open { display: flex;
-    animation: fadeIn .25s ease forwards;
+  .menu.open { 
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .nav-list__item {
+    margin-bottom: 10px;
+  }
+  
+  .nav-list__link {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
   }
 }
 

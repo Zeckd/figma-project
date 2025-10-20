@@ -48,13 +48,23 @@ const menu = document.getElementById('menu');
 function openMenu() {
   if (!burger || !menu) return;
   burger.setAttribute('aria-expanded', 'true');
-  menu.classList.add('open');
+  menu.style.display = 'flex';
+  // Небольшая задержка для плавной анимации
+  setTimeout(() => {
+    menu.classList.add('open');
+  }, 10);
 }
 
 function closeMenu() {
   if (!burger || !menu) return;
   burger.setAttribute('aria-expanded', 'false');
   menu.classList.remove('open');
+  // Скрываем меню после завершения анимации
+  setTimeout(() => {
+    if (!menu.classList.contains('open')) {
+      menu.style.display = 'none';
+    }
+  }, 300);
 }
 
 function toggleMenu() {
@@ -65,11 +75,6 @@ function toggleMenu() {
 
 if (burger) {
   burger.addEventListener('click', toggleMenu);
-}
-
-function toggleMenu() {
-  const expanded = burger.getAttribute('aria-expanded') === 'true';
-  if (expanded) closeMenu(); else openMenu();
 }
 
 // Close on menu item click (mobile)
@@ -85,6 +90,18 @@ if (menu) {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && burger && burger.getAttribute('aria-expanded') === 'true') {
     closeMenu();
+  }
+});
+
+// Close on click outside menu
+document.addEventListener('click', (e) => {
+  if (burger && burger.getAttribute('aria-expanded') === 'true') {
+    const isClickInsideMenu = menu.contains(e.target);
+    const isClickOnBurger = burger.contains(e.target);
+    
+    if (!isClickInsideMenu && !isClickOnBurger) {
+      closeMenu();
+    }
   }
 });
 
@@ -162,7 +179,7 @@ if (window.PORTFOLIO_DATA && Array.isArray(window.PORTFOLIO_DATA.testimonials)) 
   renderTestimonials(window.PORTFOLIO_DATA.testimonials);
 }
 
-// Плавная прокрутка к проектам при клике в навигации, если мы на главной
+// Плавная прокрутка к проектам 
 document.addEventListener('click', (e) => {
   const link = e.target.closest('a[href]');
   if (!link) return;
@@ -172,7 +189,24 @@ document.addEventListener('click', (e) => {
   if (isProjectsAnchor && isSamePage) {
     e.preventDefault();
     const el = document.getElementById('projects');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (el) {
+      // Закрываем мобильное меню если оно открыто
+      if (burger && burger.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+      
+      // Прокручиваем с дополнительным отступом для мобильных устройств
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const offset = isMobile ? 235 : 80; // Больше отступ на мобильных
+      
+      const elementPosition = el.offsetTop;
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   }
 });
 
